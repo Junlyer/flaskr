@@ -3,11 +3,13 @@ from flask_bootstrap import Bootstrap
 from flask_wtf import Form
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
+from flask_mail import Mail
 
 app = Flask(__name__, template_folder='app/templates/')
 #secret_key should be changed
 app.config['SECRET_KEY'] = 'hard to guess string'
 bootstrap = Bootstrap(app)
+mail = Mail(app)
 
 class NameForm(Form):
 	name = StringField('What is your name?', validators=[DataRequired()])
